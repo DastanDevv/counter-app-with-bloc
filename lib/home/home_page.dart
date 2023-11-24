@@ -1,4 +1,5 @@
 import 'package:counter_bloc2/cubit/counter_cubit.dart';
+import 'package:counter_bloc2/second/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +26,17 @@ class MyHomePage extends StatelessWidget {
               context.watch<CounterCubit>().state.toString(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => const SecondPage(),
+                  ),
+                );
+              },
+              child: const Text('Go to Second Page'),
+            )
           ],
         ),
       ),
@@ -37,13 +49,6 @@ class MyHomePage extends StatelessWidget {
             },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              context.read<CounterCubit>().decrement();
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.remove),
           ),
         ],
       ),
